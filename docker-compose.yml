@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: suburban-vm-service
+      POSTGRES_USER: suburban
+      POSTGRES_PASSWORD: suburban
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  nest-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    ports:
+      - '3000:3000'
+    environment:
+      DATABASE_URL: postgres://suburban:suburban@postgres:5432/suburban-vm-service
+
+volumes:
+  postgres_data:

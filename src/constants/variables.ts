@@ -1,0 +1,2 @@
+export const NutanixUrl = "https://172.31.1.10:9440/PrismGateway/services/rest/v2.0"
+export const vmId = "0005b370-6696-6ae7-2947-ac1f6b3b9b68%3A%3Ab9b3f934-ffde-4449-98e6-cdafdc9ab437?__=17016799255200"
