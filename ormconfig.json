@@ -3,10 +3,12 @@
     "type": "postgres",
     "host": "localhost",
     "port": 5432,
-    "username": "postgres",
-    "password": "postgres",
-    "database": "suburban-console",
-    "entities": ["dist/**/*.entity.js"],
+    "username": "suburban",
+    "password": "suburban",
+    "database": "suburban-vm-service",
+    "entities": [
+      "dist/**/*.entity.js"
+    ],
     "synchronize": true
   },
   {
@@ -16,7 +18,9 @@
     "username": "postgres",
     "password": "postgres",
     "database": "suburban-console-billing",
-    "entities": ["dist/**/*.entity.js"],
+    "entities": [
+      "dist/**/*.entity.js"
+    ],
     "synchronize": true
   }
 ]
