@@ -10,7 +10,9 @@ RUN pnpm install
 
 COPY . .
 
+# Build the Nest.js application
+RUN pnpm run build
+
 EXPOSE 3000
 
 CMD ["pnpm", "start:prod"]
-
