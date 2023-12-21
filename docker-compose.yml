@@ -1,27 +1,33 @@
-version: '3'
+version: '3.8'
 
 services:
   postgres:
     image: postgres:latest
+    container_name: consoledb_container
     environment:
-      POSTGRES_DB: suburban-vm-service
-      POSTGRES_USER: suburban
-      POSTGRES_PASSWORD: suburban
+      POSTGRES_DB: consoledb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     ports:
       - '5432:5432'
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   nest-app:
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: console_service
+    ports:
+      - '8000:8000'
     depends_on:
       - postgres
-    ports:
-      - '3000:3000'
     environment:
-      DATABASE_URL: postgres://suburban:suburban@postgres:5432/suburban-vm-service
-
-volumes:
-  postgres_data:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: consoledb
