@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { VmModule } from './vm/vm.module';
 import { AuthModule } from './users/auth.module';
 import { User } from './users/user.entity';
+import { IpModule } from './ip/ip.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { User } from './users/user.entity';
     }),
     AuthModule,
     VmModule,
+    IpModule,
   ],
   controllers: [AppController],
   providers: [AppService],
